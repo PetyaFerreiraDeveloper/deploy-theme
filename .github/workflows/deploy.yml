@@ -84,7 +84,7 @@ jobs:
         username: u215844095
         key: ${{ secrets.SSH_KEY }}
         port: 65002
-        source: "wp-content/themes/deploy-theme/*"
+        source: "."
         target: "/home/u215844095/public_html/wp-content/themes/deploy-theme/"
         rm: true
 

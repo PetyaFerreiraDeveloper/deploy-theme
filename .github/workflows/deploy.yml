@@ -73,6 +73,7 @@ jobs:
         username: u215844095
         key: ${{ secrets.SSH_KEY }}
         port: 65002
+        source: "."
         target: "/home/u215844095/practice-site.petyaferreira.com/wp-content/themes/deploy-theme/"
 
     - name: 🔄 Reload Server

@@ -74,7 +74,7 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         port: 65002
         source: "."
-        target: "/home/u215844095/public_html//wp-content/themes/deploy-theme/"
+        target: "/home/u215844095/public_html/wp-content/themes/deploy-theme/"
 
     - name: 🔄 Reload Server
       uses: appleboy/ssh-action@v0.1.7

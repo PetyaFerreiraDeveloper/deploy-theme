@@ -66,7 +66,18 @@ jobs:
         git commit -m "Versionbump" || true
         git push
 
-    - name: 📂 Deploy via SSH
+    - name: 🔍 Debug Before Deployment
+      uses: appleboy/ssh-action@v0.1.7
+      with:
+        host: practice-site.petyaferreira.com
+        username: u215844095
+        key: ${{ secrets.SSH_KEY }}
+        port: 65002
+        script: |
+          echo "Before deployment:"
+          ls -lah /home/u215844095/public_html/wp-content/themes/deploy-theme/
+
+    - name: 📂 Deploy via SCP
       uses: appleboy/scp-action@v0.1.7
       with:
         host: practice-site.petyaferreira.com
@@ -75,6 +86,18 @@ jobs:
         port: 65002
         source: "."
         target: "/home/u215844095/public_html/wp-content/themes/deploy-theme/"
+        rm: true  # Force overwriting of files
+
+    - name: 🔍 Debug After Deployment
+      uses: appleboy/ssh-action@v0.1.7
+      with:
+        host: practice-site.petyaferreira.com
+        username: u215844095
+        key: ${{ secrets.SSH_KEY }}
+        port: 65002
+        script: |
+          echo "After deployment:"
+          ls -lah /home/u215844095/public_html/wp-content/themes/deploy-theme/
 
     - name: 🔄 Reload Server
       uses: appleboy/ssh-action@v0.1.7

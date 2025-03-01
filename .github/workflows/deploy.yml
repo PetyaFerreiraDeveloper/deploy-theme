@@ -60,8 +60,8 @@ jobs:
     - name: Commit and Push
       if: env.skip == 'false'
       run: |
-        git config user.email "service@abtion.com"
-        git config user.name "WuffiBot"
+        git config user.email "petianaidenova@gmail.com"
+        git config user.name "Petya"
         git add style.css
         git commit -m "Versionbump" || true
         git push
